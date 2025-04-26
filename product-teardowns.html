@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Teardowns - My Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #1A365D;
+            --secondary: #C9A66B;
+            --accent: #3B7B8A;
+            --background: #F9F7F4;
+            --text: #333333;
+            --light-text: #777777;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 400;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 6rem 0 3rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Teardown Gallery */
+        .teardown-gallery {
+            padding: 5rem 0;
+        }
+        
+        .teardown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .teardown-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .teardown-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .teardown-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .teardown-content {
+            padding: 1.5rem;
+        }
+        
+        .teardown-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .teardown-company {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .teardown-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .key-insights {
+            margin: 1.5rem 0;
+        }
+        
+        .key-insights h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .key-insights ul {
+            list-style: none;
+        }
+        
+        .key-insights li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .key-insights li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 1rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">Portfolio</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="business-case-studies.html">Business Case Studies</a></li>
+                <li><a href="product-teardowns.html">Product Teardowns</a></li>
+                <li><a href="product-case-studies.html">Product Case Studies</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Product Teardowns</h1>
+            <p>Detailed analyses of popular digital products and services, breaking down their UX, feature sets, business models, and overall effectiveness. Each teardown offers insights into what works, what doesn't, and why.</p>
+        </div>
+    </section>
+
+    <!-- Teardown Gallery -->
+    <section class="teardown-gallery">
+        <div class="container">
+            <div class="teardown-grid">
+                <!-- Teardown 1 -->
+                <div class="teardown-card">
+                    <img src="/api/placeholder/400/300" alt="Spotify App Teardown">
+                    <div class="teardown-content">
+                        <h3>Spotify Mobile App</h3>
+                        <span class="teardown-company">Spotify</span>
+                        <p>An analysis of Spotify's mobile app experience, focusing on personalization, discovery features, and user engagement tactics.</p>
+                        
+                        <div class="key-insights">
+                            <h4>Key Insights:</h4>
+                            <ul>
+                                <li>Algorithmic recommendation system</li>
+                                <li>Social integration features</li>
+                                <li>Premium conversion strategies</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="spotify-teardown.html" class="btn">View Teardown</a>
+                    </div>
+                </div>
+                
+                <!-- Teardown 2 -->
+                <div class="teardown-card">
+                    <img src="/api/placeholder/400/300" alt="Airbnb UX Teardown">
+                    <div class="teardown-content">
+                        <h3>Airbnb Booking Experience</h3>
+                        <span class="teardown-company">Airbnb</span>
+                        <p>A deep dive into Airbnb's search, filtering, and booking process, examining how they build trust and facilitate transactions.</p>
+                        
+                        <div class="key-insights">
+                            <h4>Key Insights:</h4>
+                            <ul>
+                                <li>Trust-building mechanisms</li>
+                                <li>Frictionless booking process</li>
+                                <li>Photography and presentation standards</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="airbnb-teardown.html" class="btn">View Teardown</a>
+                    </div>
+                </div>
+                
+                <!-- Teardown 3 -->
+                <div class="teardown-card">
+                    <img src="/api/placeholder/400/300" alt="Notion Teardown">
+                    <div class="teardown-content">
+                        <h3>Notion Productivity App</h3>
+                        <span class="teardown-company">Notion</span>
+                        <p>An examination of Notion's flexible productivity system, focusing on its blocks-based architecture and customization options.</p>
+                        
+                        <div class="key-insights">
+                            <h4>Key Insights:</h4>
+                            <ul>
+                                <li>Modular block system</li>
+                                <li>Templates as growth drivers</li>
+                                <li>Community-driven expansion</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="notion-teardown.html" class="btn">View Teardown</a>
+                    </div>
+                </div>
+                
+                <!-- Teardown 4 -->
+                <div class="teardown-card">
+                    <img src="/api/placeholder/400/300" alt="Robinhood Teardown">
+                    <div class="teardown-content">
+                        <h3>Robinhood Trading Platform</h3>
+                        <span class="teardown-company">Robinhood</span>
+                        <p>A critical analysis of Robinhood's investing app, examining its gamification elements and simplified investing approach.</p>
+                        
+                        <div class="key-insights">
+                            <h4>Key Insights:</h4>
+                            <ul>
+                                <li>Gamification techniques</li>
+                                <li>Onboarding simplicity</li>
+                                <li>Controversial design patterns</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="robinhood-teardown.html" class="btn">View Teardown</a>
+                    </div>
+                </div>
+                
+                <!-- Teardown 5 -->
+                <div class="teardown-card">
+                    <img src="/api/placeholder/400/300" alt="Figma Teardown">
+                    <div class="teardown-content">
+                        <h3>Figma Design Tool</h3>
+                        <span class="teardown-company">Figma</span>
+                        <p>An exploration of Figma's collaborative design platform, analyzing its real-time collaboration features and plugin ecosystem.</p>
+                        
+                        <div class="key-insights">
+                            <h4>Key Insights:</h4>
+                            <ul>
+                                <li>Cloud-based collaboration</li>
+                                <li>Component-based design system</li>
+                                <li>Developer handoff features</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="figma-teardown.html" class="btn">View Teardown</a>
+                    </div>
+                </div>
+                
+                <!-- Teardown 6 -->
+                <div class="teardown-card">
+                    <img src="/api/placeholder/400/300" alt="DoorDash Teardown">
+                    <div class="teardown-content">
+                        <h3>DoorDash Food Delivery</h3>
+                        <span class="teardown-company">DoorDash</span>
+                        <p>An analysis of DoorDash's user experience, examining the ordering process, real-time tracking, and delivery logistics.</p>
+                        
+                        <div class="key-insights">
+                            <h4>Key Insights:</h4>
+                            <ul>
+                                <li>Transparent delivery tracking</li>
+                                <li>Marketplace dynamics</li>
+                                <li>Subscription model (DashPass)</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="doordash-teardown.html" class="btn">View Teardown</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 John Doe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

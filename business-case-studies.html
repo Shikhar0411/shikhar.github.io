@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Case Studies - My Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #1A365D;
+            --secondary: #C9A66B;
+            --accent: #3B7B8A;
+            --background: #F9F7F4;
+            --text: #333333;
+            --light-text: #777777;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 400;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 6rem 0 3rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Case Studies */
+        .case-studies {
+            padding: 5rem 0;
+        }
+        
+        .case-study-card {
+            background: white;
+            margin-bottom: 3rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .case-study-card {
+                flex-direction: row;
+            }
+        }
+        
+        .case-study-image {
+            flex: 1;
+        }
+        
+        .case-study-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .case-study-content {
+            flex: 2;
+            padding: 2rem;
+        }
+        
+        .case-study-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .case-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .metric {
+            background: var(--background);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 1rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">Portfolio</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="business-case-studies.html">Business Case Studies</a></li>
+                <li><a href="product-teardowns.html">Product Teardowns</a></li>
+                <li><a href="product-case-studies.html">Product Case Studies</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Business Case Studies</h1>
+            <p>Exploring complex business challenges and strategic solutions across various industries. Each case study showcases my analytical approach to problem-solving and delivering measurable results.</p>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies">
+        <div class="container">
+            <!-- Case Study 1 -->
+            <div class="case-study-card">
+                <div class="case-study-image">
+                    <img src="/api/placeholder/600/400" alt="Retail Strategy Case Study">
+                </div>
+                <div class="case-study-content">
+                    <h3>Retail Expansion Strategy for GlobalMarket</h3>
+                    <p>Developed a comprehensive market expansion strategy for a retail chain looking to enter 3 new metropolitan areas. The strategy included location analysis, competitive landscape assessment, and targeted marketing recommendations.</p>
+                    
+                    <div class="case-metrics">
+                        <span class="metric">20% Revenue Growth</span>
+                        <span class="metric">5 New Locations</span>
+                        <span class="metric">18-Month Strategy</span>
+                    </div>
+                    
+                    <a href="business-case-study-1.html" class="btn">Read Case Study</a>
+                </div>
+            </div>
+            
+            <!-- Case Study 2 -->
+            <div class="case-study-card">
+                <div class="case-study-image">
+                    <img src="/api/placeholder/600/400" alt="Digital Transformation Case Study">
+                </div>
+                <div class="case-study-content">
+                    <h3>Digital Transformation for FinServe Inc.</h3>
+                    <p>Led a digital transformation initiative for a traditional financial services company, modernizing their customer experience, streamlining operations, and implementing data-driven decision making across the organization.</p>
+                    
+                    <div class="case-metrics">
+                        <span class="metric">35% Cost Reduction</span>
+                        <span class="metric">40% Faster Processing</span>
+                        <span class="metric">89% Customer Satisfaction</span>
+                    </div>
+                    
+                    <a href="business-case-study-2.html" class="btn">Read Case Study</a>
+                </div>
+            </div>
+            
+            <!-- Case Study 3 -->
+            <div class="case-study-card">
+                <div class="case-study-image">
+                    <img src="/api/placeholder/600/400" alt="Supply Chain Optimization Case Study">
+                </div>
+                <div class="case-study-content">
+                    <h3>Supply Chain Optimization for TechManufacture</h3>
